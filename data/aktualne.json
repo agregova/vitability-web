@@ -1,0 +1,19 @@
+{
+  "_info": "Tu môže Jana meniť aktuálne hodiny. Texty medzi úvodzovkami môže prepísať. Ak hodinu nechce zobraziť, môže celý jej blok odstrániť.",
+  "lessons": [
+    {
+      "day": "Pondelok",
+      "time": "18:00",
+      "name": "Fyziojoga",
+      "place": "Bratislava",
+      "note": "Voľné miesta"
+    },
+    {
+      "day": "Streda",
+      "time": "17:30",
+      "name": "Jemná joga 50+",
+      "place": "Bratislava",
+      "note": ""
+    }
+  ]
+}
