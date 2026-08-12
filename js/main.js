@@ -1,3 +1,13 @@
+if (window.location.protocol.startsWith('http')) {
+  const { pathname, search, hash } = window.location;
+  const lastPathSegment = pathname.split('/').pop() || '';
+  const hasFileExtension = lastPathSegment.includes('.');
+
+  if (!pathname.endsWith('/') && !hasFileExtension) {
+    window.location.replace(`${pathname}/${search}${hash}`);
+  }
+}
+
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
 
