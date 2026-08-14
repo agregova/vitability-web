@@ -66,3 +66,59 @@ function escapeHtml(value = '') {
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 loadCurrentLessons();
+
+document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+  const track = carousel.querySelector(".carousel-track");
+  const slides = [...carousel.querySelectorAll(".carousel-slide")];
+  const dotsContainer = carousel.querySelector(".carousel-dots");
+
+  if (!track || !dotsContainer || slides.length === 0) {
+    return;
+  }
+
+  const dots = slides.map((slide, index) => {
+    const dot = document.createElement("button");
+
+    dot.className = "carousel-dot";
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Zobraziť položku ${index + 1}`);
+
+    if (index === 0) {
+      dot.classList.add("is-active");
+    }
+
+    dot.addEventListener("click", () => {
+      slide.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start"
+      });
+    });
+
+    dotsContainer.appendChild(dot);
+
+    return dot;
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        const index = slides.indexOf(entry.target);
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("is-active", dotIndex === index);
+        });
+      });
+    },
+    {
+      root: track,
+      threshold: 0.6
+    }
+  );
+
+  slides.forEach((slide) => observer.observe(slide));
+});

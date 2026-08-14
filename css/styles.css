@@ -736,3 +736,112 @@ p { margin-top: 0; }
   margin-bottom: 0.7rem;
   line-height: 1.6;
 }
+
+.carousel {
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 88%;
+  scroll-snap-align: start;
+
+  box-sizing: border-box;
+  padding: 1.25rem;
+
+  border-radius: 1rem;
+  background: var(--color-background);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: var(--color-primary);
+  opacity: 0.3;
+
+  cursor: pointer;
+}
+
+.carousel-dot.is-active {
+  opacity: 1;
+}
+
+.video-preview {
+  display: grid;
+  place-items: center;
+
+  aspect-ratio: 16 / 9;
+  margin: -1.25rem -1.25rem 1rem;
+
+  border-radius: 1rem 1rem 0 0;
+  background: var(--color-deep);
+}
+
+.play-button {
+  display: grid;
+  place-items: center;
+
+  width: 3.5rem;
+  height: 3.5rem;
+
+  border-radius: 50%;
+
+  background: var(--color-background);
+  color: var(--color-deep);
+}
+
+/* Carousel iba na mobile.
+   Na desktope sa obsah zobrazí ako klasické 3 karty. */
+
+@media (min-width: 768px) {
+  .carousel-track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .carousel-slide {
+    width: auto;
+    min-width: 0;
+    flex: none;
+    scroll-snap-align: none;
+
+    padding: 1.35rem;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .carousel-dots {
+    display: none;
+  }
+}
