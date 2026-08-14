@@ -122,3 +122,10 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
 
   slides.forEach((slide) => observer.observe(slide));
 });
+
+mainNav?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    mainNav.classList.remove('is-open');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+  });
+});

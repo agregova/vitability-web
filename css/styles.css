@@ -856,3 +856,19 @@ section[id] {
     scroll-margin-top: 4rem;
   }
 }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .carousel-track {
+    scroll-behavior: auto;
+  }
+}
